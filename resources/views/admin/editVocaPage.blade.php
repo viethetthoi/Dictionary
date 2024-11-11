@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
+    <link rel="stylesheet" href="/PBL6/public/css/style_addeditVoca.css">
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('image_voca').addEventListener('change', function(event) {
@@ -47,7 +48,7 @@
             </div>
 
             <div class="form-group">
-                {!! Form::textarea('example', $vocabulary->example, ['class' => 'form-control', 'placeholder' => 'Ví dụ']) !!}
+                {!! Form::textarea('example', $vocabulary->example, ['class' => 'form-control', 'placeholder' => 'Ví dụ', 'style' => 'height: 100px;']) !!}
                 @error('example')
                     <small class="form-text text-danger">{{$message}}</small>
                 @enderror

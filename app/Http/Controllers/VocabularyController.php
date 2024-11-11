@@ -124,5 +124,25 @@ class VocabularyController extends Controller
         }
         return redirect()->route('listVocaOfTopic', ['id' => $input['id_topic']])->with('status', 'Từ vựng có ID = '.$id_vocabu.' đã sửa thành công');
     }
+
+    function reviewVoca($id_topic) {
+        $topic = Topics::find($id_topic);
+        $nameTopic = $topic->name_topic;
+        $vocabularies = Vocabularys::where('id_topic', $id_topic)->get();
+        
+        return view('reviewVocaPage', [
+            'id_topic' => $id_topic,
+            'vocabularies' => $vocabularies,
+            'nameTopic' => $nameTopic
+        ]);
+    }
+
+    function submitReview(){
+        return redirect()->route('topicPage');
+    }
+    
+    function backReview($id_topic){
+        return redirect()->route('reviewVocaPage', ['id_topic' => $id_topic]);
+    }
 }
  

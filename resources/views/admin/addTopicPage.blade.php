@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
+    <link rel="stylesheet" href="/PBL6/public/css/style_addeditTopic.css">
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('image_topic').addEventListener('change', function(event) {
@@ -32,7 +33,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                {!! Form::textarea('describe_topic','', ['class' => 'form-control', 'placeholder' => 'Nội dung']) !!}
+                {!! Form::textarea('describe_topic','', ['class' => 'form-control', 'placeholder' => 'Nội dung', 'style' => 'height: 100px;']) !!}
                 @error('describe_topic')
                     <small class="form-text text-danger">{{$message}}</small>
                 @enderror

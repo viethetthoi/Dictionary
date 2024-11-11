@@ -84,3 +84,7 @@ Route::get('user/info/{username}',[AccountController::class, 'infoPage'])->name(
 Route::post('user/info/update',[AccountController::class, 'updateUser']);
 Route::post('user/info/updatepassword',[AccountController::class, 'changePassword']);
 Route::get('user/homepage/{username}', [AccountController::class, 'userPage'])->name('userHomePage');
+
+Route::get('user/topic/review/{id_topic}', [VocabularyController::class, 'reviewVoca'])->name('reviewVocaPage');
+Route::get('user/topic/review/back/{id_topic}',[VocabularyController::class, 'backReview']);
+Route::post('user/topic/review/submit', [VocabularyController::class, 'submitReview']);
