@@ -12,8 +12,29 @@
 
       <!--=============== CSS ===============-->
       <link rel="stylesheet" href="/PBL6-Dictionary/public/css/styles_detailTopic.css">
-
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <title>Responsive card slider - Bedimcode</title>
+      <style>
+         .heart {
+             font-size: 50px;
+             color: rgb(255, 251, 251);
+             text-decoration: none;
+             cursor: pointer;
+             transition: color 0.3s;
+         }
+
+         .heart_favou {
+             font-size: 50px;
+             color: rgb(250, 0, 0);
+             text-decoration: none;
+             cursor: pointer;
+             transition: color 0.3s;
+         }
+         
+         .heart.liked {
+             color: red;
+         }
+     </style>
    </head>
    <body>
       
@@ -26,20 +47,53 @@
             <div class="card__content">
                <div class="swiper-wrapper">
                   @foreach ($vocabularys as $vocabulary)
-                     <article class="card__article swiper-slide">
-                        <div class="card__image">
-                           <img src="{{url($vocabulary->image_voca)}}" alt="image" class="card__img">
-                           <div class="card__shadow"></div>
-                        </div>
-         
-                        <div class="card__data">
-                           <h1 class="card__vocabulary">{{$vocabulary->name_voca}}</h1>
-                           <h2 class="card__transcribe">{{$vocabulary->transcribe_phonetically}}</h2>
-                           <h2 class="card__translate">{{$vocabulary->meaning}}</h2>
-                           <p class="card__example">{{$vocabulary->example}}</p>
-                        </div>
-                     </article>                     
-                  @endforeach
+                  <article class="card__article swiper-slide">
+                      <div class="card__image">
+                          <img src="{{url($vocabulary->image_voca)}}" alt="image" class="card__img">
+                          <div class="card__shadow"></div>
+                      </div>
+              
+                      <div class="card__data">
+                          <h1 class="card__vocabulary">{{$vocabulary->name_voca}}</h1>
+                          <h2 class="card__transcribe">{{$vocabulary->transcribe_phonetically}}</h2>
+                          <h2 class="card__translate">{{$vocabulary->meaning}}</h2>
+                          <p class="card__example">{{$vocabulary->example}}</p>
+                          
+                          <a href="#" 
+                             class="heart {{ $vocabulary->favourite == 1 ? 'heart_favou' : '' }}" 
+                             data-id="{{ $vocabulary->id }}"
+                             onclick="toggleFavourite(event, '{{ $username }}', {{ $vocabulary->id }})">
+                              {{ $vocabulary->favourite == 1 ? '❤' : '♡' }}
+                          </a>
+                      </div>
+                  </article>
+              @endforeach
+              
+              <script>
+                  function toggleFavourite(event, username, id_voca) {
+                      event.preventDefault(); // Ngăn chặn hành động mặc định của thẻ a
+              
+                      // Gửi yêu cầu AJAX đến server, truyền cả username và id_voca
+                      $.ajax({
+                          url: '/PBL6/vocabulary/' + username + '/' + id_voca + '/toggle-favourite',
+                          method: 'GET',
+                          success: function(response) {
+                              if (response.status === 'success') {
+                                  // Nếu thành công, thay đổi màu sắc của trái tim
+                                  var heart = $('a[data-id="' + id_voca + '"]');
+                                  if (response.favourite == 1) {
+                                      heart.addClass('heart_favou').removeClass('heart');
+                                      heart.html('❤'); // Đổi thành trái tim đầy
+                                  } else {
+                                      heart.removeClass('heart_favou').addClass('heart');
+                                      heart.html('♡'); // Đổi thành trái tim rỗng
+                                  }
+                              }
+                          }
+                      });
+                  }
+              </script>
+              
  
                </div>
             </div>

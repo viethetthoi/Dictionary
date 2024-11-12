@@ -142,6 +142,8 @@ img {
   margin-bottom: 1.75rem;
 }
 
+
+
 .card__button {
   display: inline-block;
   background-color: var(--first-color);
@@ -150,6 +152,8 @@ img {
   color: var(--dark-color);
   font-weight: 600;
 }
+
+
 
 /* Swiper class */
 .swiper-button-prev:after,

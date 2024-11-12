@@ -32,9 +32,9 @@ Route::get('/dictionaryPage', function () {
     return view('dictionaryPage');
 })->name('dictionaryPage');
 
-Route::get('user/topicPage', [TopicsController::class, 'topicsToPage'])->name('topicPage');
+Route::get('user/topicPage/{username}', [TopicsController::class, 'topicsToPage'])->name('topicPage');
 
-Route::get('user/topicPage/vocabulary/{id_topic}', [TopicsController::class, 'vocaToTopicPage'])->name('detailtopicPage');
+Route::get('user/topicPage/vocabulary/{username}/{id_topic}', [TopicsController::class, 'vocaToTopicPage'])->name('detailtopicPage');
 
 //login
 Route::get('user/login', function () {
@@ -88,3 +88,5 @@ Route::get('user/homepage/{username}', [AccountController::class, 'userPage'])->
 Route::get('user/topic/review/{id_topic}', [VocabularyController::class, 'reviewVoca'])->name('reviewVocaPage');
 Route::get('user/topic/review/back/{id_topic}',[VocabularyController::class, 'backReview']);
 Route::post('user/topic/review/submit', [VocabularyController::class, 'submitReview']);
+// Route::get('user/topic/vocabulary/favourite/{username}/{id_voca}', [VocabularyController::class, 'addFavourite'])->name('addFavouritePage');
+Route::get('vocabulary/{username}/{id_voca}/toggle-favourite', [VocabularyController::class, 'addFavourite'])->name('toggleFavourite');

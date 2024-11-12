@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favourites;
 use App\Models\Vocabularys;
 use App\Models\Topics;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class VocabularyController extends Controller
@@ -144,5 +146,30 @@ class VocabularyController extends Controller
     function backReview($id_topic){
         return redirect()->route('reviewVocaPage', ['id_topic' => $id_topic]);
     }
+
+    public function addFavourite($username, $id_voca){
+    $id_user = User::where('name', $username)->first()->id;
+    $id_topic = Vocabularys::find($id_voca)->first()->id;
+    $controller = new TopicsController();
+    $favourite = Favourites::where([
+        ['id_user', $id_user],
+        ['id_voca', $id_voca]
+    ])->first();
+
+    if ($favourite) {
+        $favourite->favourite = ($favourite->favourite == 0) ? 1 : 0;
+        $favourite->save();
+        return response()->json(['status' => 'success', 'favourite' => $favourite->favourite]);
+    } else {
+        Favourites::create([
+            'id_user' => $id_user,
+            'id_voca' => $id_voca,
+            'favourite' => 1
+        ]);
+        return response()->json(['status' => 'success', 'favourite' => 1]);
+    }
+}
+
+
 }
  

@@ -16,5 +16,6 @@ class Vocabularys extends Model
         'example',
         'image_voca',
         'id_topic',
+        'favourite',
     ];
 }

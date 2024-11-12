@@ -33,7 +33,7 @@
         </li>
         <li>
           <span class="fab fa-themeisle" id="headIcon"></span>
-          <a href="#" onclick="event.preventDefault(); loadPage('{{ route('topicPage') }}')"> Topic </a>
+          <a href="#" onclick="event.preventDefault(); loadPage('{{ route('topicPage', ['username' => $username]) }}')"> Topic </a>
         </li>
         <li>
           <span class="fas fa-spell-check" id="headIcon"></span>

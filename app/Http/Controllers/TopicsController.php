@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favourites;
 use App\Models\Topics;
 use App\Models\Vocabularys;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TopicsController extends Controller
@@ -72,15 +74,27 @@ class TopicsController extends Controller
         return redirect()->route('listTopic')->with('status', 'Đã thêm thành công');
     }
 
-    function topicsToPage(){
+    function topicsToPage($username){
         $topics = Topics::all();
-        return view('topicPage', compact('topics'));
+        return view('topicPage', compact('topics', 'username'));
     }
 
-    function vocaToTopicPage($id_topic){
+    function vocaToTopicPage($username,$id_topic){
         $topic = Topics::find($id_topic);
         $nameTopic = $topic->name_topic;
+        $id_user = User::where('name', $username)->first()->id;
         $vocabularys = Vocabularys::where('id_topic', $id_topic)->get();
-        return view('detailTopicPage', ['id_topic' => $id_topic], compact('vocabularys', 'nameTopic'));
+        $updatedVocabularys = [];
+        foreach ($vocabularys as $vocabulary) {
+            $favourite = Favourites::where([
+                ['id_user', $id_user],
+                ['id_voca', $vocabulary->id]
+            ])->first();
+        
+            $vocabulary->favourite = $favourite ? $favourite->favourite : 0;
+            $updatedVocabularys[] = $vocabulary;
+        } 
+        $vocabularys = collect($updatedVocabularys);
+        return view('detailTopicPage', ['id_topic' => $id_topic], compact('vocabularys', 'nameTopic', 'username'));
     }
 }
