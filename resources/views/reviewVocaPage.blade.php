@@ -29,7 +29,7 @@
             @endforeach
             <div id="result" style="display: none; font-size: 1.5em; text-align: center; margin-top: 20px;"></div>
             <div class="button-container" style=" display: flex">
-                {!! Form::open(['url' => 'user/topic/review/submit', 'method' => 'POST']) !!}
+                {!! Form::open(['url' => 'user/topic/review/submit/'. $username, 'method' => 'POST']) !!}
                     {!! Form::submit('Finish', ['class' => 'continue-btn', 'id' => 'finishButton', 'style' => 'display:none; margin-right: 40px; margin-left: 70px;', 'value' => 'back1']) !!}
                 {!! Form::close() !!}
 

@@ -45,8 +45,12 @@
         </li>
         <li>
             <span class="fas fa-info" id="headIcon"></span>
-            <a href=""  onclick="event.preventDefault(); loadPage('{{ route('infoPage', ['username' => $username]) }}')"> Information </a>
+            <a href=""  onclick="event.preventDefault(); loadPage('{{ route('infoPage', ['username' => $username]) }}')"> Info </a>
         </li>
+        <li>
+          <span class="fas fa-heart" id="headIcon"></span>
+          <a href=""  onclick="event.preventDefault(); loadPage('{{ route('favouritePage', ['username' => $username]) }}')"> Heart </a>
+      </li>
         
       </ul>
       <ul style="width: 100px">

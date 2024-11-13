@@ -41,6 +41,10 @@
           <span class="fas fa-info" id="headIcon"></span>
           <a href=""  onclick="event.preventDefault(); loadPage('{{ route('infoPage', ['username' => $username]) }}')"> Information </a>
         </li>
+        
+      </ul>
+
+      <ul>
         <li>
           <span class="fas fa-sign-out-alt" id="headIcon"></span>
           <a href="{{ route('header') }}"> Log Out </a>

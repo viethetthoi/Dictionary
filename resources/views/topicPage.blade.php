@@ -25,7 +25,7 @@
                             <h1>{{$topic['name_topic']}}</h1>
                             <p>{{$topic['describe_topic']}}</p>
                             <a href="#" onclick="event.preventDefault(); window.location.href='{{ route('detailtopicPage', ['username' => $username,'id_topic' => $topic['id']]) }}'" class="btn">Read More</a>
-                            <a href="#" onclick="event.preventDefault(); window.location.href='{{ route('reviewVocaPage', ['id_topic' => $topic['id']]) }}'" class="btn">Review</a>
+                            <a href="#" onclick="event.preventDefault(); window.location.href='{{ route('reviewVocaPage', ['username' => $username, 'id_topic' => $topic['id']]) }}'" class="btn">Review</a>
                         </div>
                     </div>
                 @endforeach

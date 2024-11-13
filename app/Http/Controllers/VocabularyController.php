@@ -127,7 +127,7 @@ class VocabularyController extends Controller
         return redirect()->route('listVocaOfTopic', ['id' => $input['id_topic']])->with('status', 'Từ vựng có ID = '.$id_vocabu.' đã sửa thành công');
     }
 
-    function reviewVoca($id_topic) {
+    function reviewVoca($username, $id_topic) {
         $topic = Topics::find($id_topic);
         $nameTopic = $topic->name_topic;
         $vocabularies = Vocabularys::where('id_topic', $id_topic)->get();
@@ -135,12 +135,13 @@ class VocabularyController extends Controller
         return view('reviewVocaPage', [
             'id_topic' => $id_topic,
             'vocabularies' => $vocabularies,
-            'nameTopic' => $nameTopic
+            'nameTopic' => $nameTopic,
+            'username' => $username
         ]);
     }
 
-    function submitReview(){
-        return redirect()->route('topicPage');
+    function submitReview($username){
+        return redirect()->route('topicPage',['username' => $username]);
     }
     
     function backReview($id_topic){
@@ -148,27 +149,55 @@ class VocabularyController extends Controller
     }
 
     public function addFavourite($username, $id_voca){
-    $id_user = User::where('name', $username)->first()->id;
-    $id_topic = Vocabularys::find($id_voca)->first()->id;
-    $controller = new TopicsController();
-    $favourite = Favourites::where([
-        ['id_user', $id_user],
-        ['id_voca', $id_voca]
-    ])->first();
+        $id_user = User::where('name', $username)->first()->id;
+        $favourite = Favourites::where([
+            ['id_user', $id_user],
+            ['id_voca', $id_voca]
+        ])->first();
 
-    if ($favourite) {
+        if ($favourite) {
+            $favourite->favourite = ($favourite->favourite == 0) ? 1 : 0;
+            $favourite->save();
+            return response()->json(['status' => 'success', 'favourite' => $favourite->favourite]);
+        } else {
+            Favourites::create([
+                'id_user' => $id_user,
+                'id_voca' => $id_voca,
+                'favourite' => 1
+            ]);
+            return response()->json(['status' => 'success', 'favourite' => 1]);
+        }
+    }
+
+    function listVocaFavourite($username) {
+        $vocabularys = [];
+        $id_user = User::where('name', $username)->first()->id;
+        $listId_voca = Favourites::where([
+            ['id_user', $id_user],
+            ['favourite', 1]
+        ])->orderBy('id_voca', 'asc')->pluck('id_voca');
+        foreach ($listId_voca as $id_voca) {
+            $vocabulary = Vocabularys::find($id_voca);
+            if ($vocabulary) {
+                $vocabularys[] = $vocabulary;
+            }
+        }
+        return view('favouritePage', compact('vocabularys', 'username'));
+    }
+
+    function deleFavourite($username, $id_voca){
+        $voca = new VocabularyController();
+        $id_user = User::where('name', $username)->first()->id;
+        $nameVoca = Vocabularys::find($id_voca)->name_voca;
+        $favourite = Favourites::where([
+            ['id_user', $id_user],
+            ['id_voca', $id_voca]
+        ])->first();
         $favourite->favourite = ($favourite->favourite == 0) ? 1 : 0;
         $favourite->save();
-        return response()->json(['status' => 'success', 'favourite' => $favourite->favourite]);
-    } else {
-        Favourites::create([
-            'id_user' => $id_user,
-            'id_voca' => $id_voca,
-            'favourite' => 1
-        ]);
-        return response()->json(['status' => 'success', 'favourite' => 1]);
+        return redirect()->route('favouritePage', ['username' => $username])->with('status', 'Đã xóa yêu thích từ '. $nameVoca);
     }
-}
+    
 
 
 }

@@ -85,8 +85,9 @@ Route::post('user/info/update',[AccountController::class, 'updateUser']);
 Route::post('user/info/updatepassword',[AccountController::class, 'changePassword']);
 Route::get('user/homepage/{username}', [AccountController::class, 'userPage'])->name('userHomePage');
 
-Route::get('user/topic/review/{id_topic}', [VocabularyController::class, 'reviewVoca'])->name('reviewVocaPage');
+Route::get('user/topic/review/{username}/{id_topic}', [VocabularyController::class, 'reviewVoca'])->name('reviewVocaPage');
 Route::get('user/topic/review/back/{id_topic}',[VocabularyController::class, 'backReview']);
-Route::post('user/topic/review/submit', [VocabularyController::class, 'submitReview']);
-// Route::get('user/topic/vocabulary/favourite/{username}/{id_voca}', [VocabularyController::class, 'addFavourite'])->name('addFavouritePage');
+Route::post('user/topic/review/submit/{username}', [VocabularyController::class, 'submitReview']);
 Route::get('vocabulary/{username}/{id_voca}/toggle-favourite', [VocabularyController::class, 'addFavourite'])->name('toggleFavourite');
+Route::get('user/favourite/{username}', [VocabularyController::class, 'listVocaFavourite'])->name('favouritePage');
+Route::get('user/favourite/delete/{username}/{id_voca}', [VocabularyController::class, 'deleFavourite']);
