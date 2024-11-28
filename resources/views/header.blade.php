@@ -22,7 +22,7 @@
   <header>
     <div class="brand">
       <span class="fas fa-globe-asia fa-3x"></span>
-      <h1>Dictionary</h1>
+      <h1>Dictionaryss</h1>
     </div>
     <span class="fas fa-bars" id="menuIcon" onclick="toggle()"></span>
     <div class="navbar" id="nav">

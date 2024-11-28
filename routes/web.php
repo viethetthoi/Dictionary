@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\VocabularyController;
 use Illuminate\Support\Facades\Route;
@@ -91,3 +92,26 @@ Route::post('user/topic/review/submit/{username}', [VocabularyController::class,
 Route::get('vocabulary/{username}/{id_voca}/toggle-favourite', [VocabularyController::class, 'addFavourite'])->name('toggleFavourite');
 Route::get('user/favourite/{username}', [VocabularyController::class, 'listVocaFavourite'])->name('favouritePage');
 Route::get('user/favourite/delete/{username}/{id_voca}', [VocabularyController::class, 'deleFavourite']);
+
+
+
+Route::get('post', [Controller::class, 'getHTTP']);
+Route::get('post/index', [Controller::class, 'getFindHTTP']);
+Route::get('post/delete', [Controller::class, 'deleteHTTP']);
+
+Route::get('dataserver', [Controller::class, 'getHTTP']);
+
+
+Route::get('/start-flask', function () {
+/// Lệnh chạy Flask mà không hiển thị terminal
+$command = 'start /B python -u c:\\xampp\\htdocs\\PBL6\\python\\app.py';
+
+// Thực thi lệnh mà không mở terminal
+$process = popen($command, 'r');
+pclose($process);
+
+// Trả về phản hồi hoặc điều hướng
+return redirect('http://127.0.0.1:5000/');
+
+})->name('imageText');
+

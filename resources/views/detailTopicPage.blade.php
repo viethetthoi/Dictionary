@@ -71,22 +71,21 @@
               
               <script>
                   function toggleFavourite(event, username, id_voca) {
-                      event.preventDefault(); // Ngăn chặn hành động mặc định của thẻ a
-              
-                      // Gửi yêu cầu AJAX đến server, truyền cả username và id_voca
+                      event.preventDefault();
+            
                       $.ajax({
                           url: '/PBL6/vocabulary/' + username + '/' + id_voca + '/toggle-favourite',
                           method: 'GET',
                           success: function(response) {
                               if (response.status === 'success') {
-                                  // Nếu thành công, thay đổi màu sắc của trái tim
+                                
                                   var heart = $('a[data-id="' + id_voca + '"]');
                                   if (response.favourite == 1) {
                                       heart.addClass('heart_favou').removeClass('heart');
-                                      heart.html('❤'); // Đổi thành trái tim đầy
+                                      heart.html('❤'); 
                                   } else {
                                       heart.removeClass('heart_favou').addClass('heart');
-                                      heart.html('♡'); // Đổi thành trái tim rỗng
+                                      heart.html('♡'); 
                                   }
                               }
                           }

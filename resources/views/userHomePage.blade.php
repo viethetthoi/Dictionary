@@ -24,7 +24,7 @@
       <span class="fas fa-globe-asia fa-3x"></span>
       <h1>Dictionary</h1>
     </div>
-    <span class="fas fa-bars" id="menuIcon" onclick="toggle()"></span>
+    {{-- <span c  lass="fas fa-bars" id="menuIcon" onclick="toggle()"></span> --}}
     <div class="navbar" id="nav">
       <ul>
         <li>
@@ -51,6 +51,7 @@
           <span class="fas fa-heart" id="headIcon"></span>
           <a href=""  onclick="event.preventDefault(); loadPage('{{ route('favouritePage', ['username' => $username]) }}')"> Heart </a>
       </li>
+     
         
       </ul>
       <ul style="width: 100px">
