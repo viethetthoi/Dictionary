@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerTests;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\VocabularyController;
 use Illuminate\Support\Facades\Route;
@@ -114,4 +115,7 @@ pclose($process);
 return redirect('http://127.0.0.1:5000/');
 
 })->name('imageText');
+
+Route::get('/admin/testpage', [ControllerTests::class, 'showTest'])->name('listTest');
+Route::get('/admin/testpage/addtest', [ControllerTests::class, 'addTest'])->name('addTest');
 

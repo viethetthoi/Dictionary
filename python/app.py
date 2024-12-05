@@ -5,7 +5,7 @@ import os
 app = Flask(__name__, template_folder=os.path.join('C:\\', 'xampp', 'htdocs', 'PBL6', 'resources', 'views'))
 
 # Đường dẫn RTSP hoặc HTTP của camera Wi-Fi
-CAMERA_URL = 'rtsp://VietDuc:123456789lop@192.168.23.190:554/stream1'
+CAMERA_URL = 'rtsp://DucViet123:123456789@172.20.10.3:554/stream1'
 
 def generate_frames():
     cap = cv2.VideoCapture(CAMERA_URL)
