@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerQuestions;
 use App\Http\Controllers\ControllerTests;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\VocabularyController;
@@ -118,4 +119,9 @@ return redirect('http://127.0.0.1:5000/');
 
 Route::get('/admin/testpage', [ControllerTests::class, 'showTest'])->name('listTest');
 Route::get('/admin/testpage/addtest', [ControllerTests::class, 'addTest'])->name('addTest');
-
+Route::get('/admin/testpage/detailtest/{id_test}', [ControllerQuestions::class, 'showQuestion'])->name('detailQuestion');
+Route::get('/admin/testpage/detailtest/addpage/{id_test}', [ControllerQuestions::class, 'addPage'])->name('addQuestionPage');
+Route::post('admin/testpage/detailtest/addquestion/submit/{id_test}', [ControllerQuestions::class, 'submitAdd']);
+Route::get('/admin/testpage/detailtest/editpage/{id_question}', [ControllerQuestions::class, 'editPage'])->name('editQuestionPage');
+Route::post('admin/testpage/detailtest/editquestion/submit/{id_question}', [ControllerQuestions::class, 'submitEdit']);
+Route::get('/admin/testpage/detailtest/deletequestion/submit/{id_question}/{id_test}', [ControllerQuestions::class, 'submitDelete'])->name('submitDeleteQuestion');
