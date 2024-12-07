@@ -3,14 +3,8 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-      <!--=============== REMIXICONS ===============-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
-
-      <!--=============== SWIPER CSS ===============-->
       <link rel="stylesheet" href="/PBL6-Dictionary/public/css/swiper-bundle.min.css">
-
-      <!--=============== CSS ===============-->
       <link rel="stylesheet" href="/PBL6-Dictionary/public/css/styles_detailTopic.css">
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <title>Responsive card slider - Bedimcode</title>
@@ -97,24 +91,18 @@
                </div>
             </div>
 
-            <!-- Navigation buttons -->
             <div class="swiper-button-next">
                <i class="ri-arrow-right-s-line"></i>
             </div>
-            
+        
             <div class="swiper-button-prev">
                <i class="ri-arrow-left-s-line"></i>
             </div>
-
-            <!-- Pagination -->
             <div class="swiper-pagination"></div>
          </div>
       </section>
-      
-      <!--=============== SWIPER JS ===============-->
+    
       <script src="/PBL6-Dictionary/public/js/swiper-bundle.min.js"></script>
-
-      <!--=============== MAIN JS ===============-->
       <script src="/PBL6-Dictionary/public/js/main.js"></script>
    </body>
 </html>

@@ -22,4 +22,9 @@ class ControllerTests extends Controller
         $tests = Test::all();
         return view('admin.testPage', compact('tests'));
     }
+
+    function showTestUser(){
+        $tests = Test::all();
+        return view('testPage', compact('tests'));
+    }
 }

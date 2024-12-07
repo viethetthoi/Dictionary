@@ -41,4 +41,9 @@ class ControllerQuestions extends Controller
         Question::find($id_question)->delete();
         return redirect()->route('detailQuestion', ['id_test' => $id_test])->with('status', 'Đã xóa thành công.');
     }
+
+    function showQuestionUser($id_test){
+        $questions = Question::where('id_test', $id_test)->get();
+        return view('questionOfTestPage', compact('questions', 'id_test'));
+    }
 }

@@ -39,7 +39,7 @@ header {
 
 .navbar {
   position: relative;
-  width: 90%;
+  width: 70%;
   padding: 5%;
   height: 100%;
   display: flex;
@@ -47,24 +47,48 @@ header {
   justify-content: space-between;
 }
 
+.searchBox {
+  position: relative;
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.searchBox input {
+  width: 100%;
+  height: 35px;
+  border: 2px solid #000; /* Viền đen */
+  border-radius: 8px;
+  padding: 1%;
+  text-indent: 10px;
+  font-size: 18px;
+}
+
+#searchIcon {
+  position: relative;
+  left: -30px;
+  font-size: 22px;
+  color: rgb(77, 77, 77);
+  cursor: pointer;
+  z-index: 221;
+}
 
 ul {
-  width: 100%; /* Đảm bảo ul chiếm hết chiều rộng navbar */
-  display: flex;
-  justify-content: space-between; /* Căn đều các thẻ li trong ul */
-  padding: 0;
-  margin: 0;
-  list-style-type: none; /* Xóa ký hiệu đầu dòng */
+  width: 80%;
+  text-align: center;
 }
 
 ul li {
+  display: inline-block;
+  margin-left: 4%;
+  transition: all 0.5s ease;
   text-align: center;
   cursor: pointer;
   padding: 1%;
   height: 20px;
-  background-color: #ffffff;
-  transition: all 0.5s ease;
-  margin: 0; /* Xóa margin để các thẻ li sát nhau */
+  overflow: hidden;
+  background-color: #ffffff; /* Nền trắng */
+  /* Xóa border */
 }
 
 ul li:hover {

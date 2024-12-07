@@ -125,3 +125,5 @@ Route::post('admin/testpage/detailtest/addquestion/submit/{id_test}', [Controlle
 Route::get('/admin/testpage/detailtest/editpage/{id_question}', [ControllerQuestions::class, 'editPage'])->name('editQuestionPage');
 Route::post('admin/testpage/detailtest/editquestion/submit/{id_question}', [ControllerQuestions::class, 'submitEdit']);
 Route::get('/admin/testpage/detailtest/deletequestion/submit/{id_question}/{id_test}', [ControllerQuestions::class, 'submitDelete'])->name('submitDeleteQuestion');
+Route::get('user/testpage', [ControllerTests::class, 'showTestUser'])->name('listTestUser');
+Route::get('user/testpage/detailtest/{id_test}', [ControllerQuestions::class, 'showQuestionUser'])->name('detailQuestionUser');

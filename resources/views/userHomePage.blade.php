@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="/PBL6-Dictionary/public/css/style_homePage.css">
+  <link rel="stylesheet" href="/PBL6/public/css/style_homePage.css">
   <title>Responsive Header</title>
 </head>
 <body>
@@ -44,13 +44,17 @@
           <a href="#" onclick="event.preventDefault(); loadPage('{{ url('/translatePage') }}')"> Translate </a>
         </li>
         <li>
+          <span class="fas fa-book" id="headIcon"></span>
+          <a href=""  onclick="event.preventDefault(); loadPage('{{ route('listTestUser') }}')"> Test </a>
+        </li>
+        <li>
             <span class="fas fa-info" id="headIcon"></span>
             <a href=""  onclick="event.preventDefault(); loadPage('{{ route('infoPage', ['username' => $username]) }}')"> Info </a>
         </li>
         <li>
           <span class="fas fa-heart" id="headIcon"></span>
           <a href=""  onclick="event.preventDefault(); loadPage('{{ route('favouritePage', ['username' => $username]) }}')"> Heart </a>
-      </li>
+        </li>
      
         
       </ul>

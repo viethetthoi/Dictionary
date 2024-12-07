@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="/PBL6-Dictionary/public/css/style_homePage.css">
+  <link rel="stylesheet" href="/PBL6/public/css/style_homePage.css">
   <title>Responsive Header</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
   <header>
     <div class="brand">
       <span class="fas fa-globe-asia fa-3x"></span>
-      <h1>Dictionaryss</h1>
+      <h1>Dictionary</h1>
     </div>
     <span class="fas fa-bars" id="menuIcon" onclick="toggle()"></span>
     <div class="navbar" id="nav">

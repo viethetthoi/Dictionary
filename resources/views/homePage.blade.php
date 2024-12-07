@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Search</title>
     <style>
-        /* Body styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -14,13 +13,11 @@
             background-color: #f4f4f9;
             color: #333;
         }
-
-        /* Section styles */
         #slider {
             position: relative;
             padding: 100px 0;
-            background-color: #ffffff; /* Nền trắng */
-            color: #333; /* Màu chữ đậm hơn để nổi bật trên nền trắng */
+            background-color: #ffffff;
+            color: #333; 
         }
 
         .container {
@@ -29,18 +26,16 @@
             padding: 0 20px;
         }
 
-        /* Row styles with flexbox */
         .row {
             display: flex;
             align-items: center;
         }
 
-        /* Heading and text styles */
         .heading-block h5 {
             font-size: 18px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #666; /* Màu chữ nhẹ nhàng hơn */
+            color: #666;
             margin-bottom: 10px;
         }
 
@@ -54,7 +49,6 @@
             line-height: 1.7;
         }
 
-        /* Button styles */
         .button {
             display: inline-block;
             padding: 15px 30px;
@@ -70,7 +64,6 @@
             background-color: #4e54c8;
         }
 
-        /* Image styles */
         .img-fluid {
             max-width: 100%;
             height: auto;
@@ -78,13 +71,11 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        /* Align image to the right */
         .col-md-6 img {
             margin-left: 80px;
             display: block;
         }
 
-        /* Responsive styles */
         @media (max-width: 768px) {
             .heading-block h2 {
                 font-size: 36px;
@@ -94,12 +85,10 @@
                 font-size: 18px;
             }
 
-            /* Make columns stack on small screens */
             .row {
                 flex-direction: column;
             }
 
-            /* Center image on small screens */
             .col-md-6 img {
                 margin: 0 auto;
             }
@@ -123,8 +112,6 @@
                     <p class="mb-5 lead" data-animate="fadeInUp" data-delay="400">
                         The latest revolution of word search. Better meaning, less ambiguity!
                     </p>
-                    <a href="#" data-scrollto="#wordsearch" data-offset="70" data-animate="fadeInUp" data-delay="600"
-                        class="button">Get Started <i class="icon-line-arrow-right"></i></a>
                 </div>
                 <div class="col-md-6">
                     <div class="m-0">
